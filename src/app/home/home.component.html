@@ -1,0 +1,49 @@
+<nav class="nav ">
+<div class="container">
+  <div class="row ">
+    <div class="col">
+      <h1 class=" text-center text-light" >welcome to themoviedb</h1>
+    </div>
+  </div>
+</div>
+</nav>
+
+<section class="pt-1">
+<div class="conationer">
+  <div class="row row-cols-1 row-cols-md-3 g-4">
+
+        @for (p of posts; track $index) {
+          <div class="col">
+            <div class="card ">
+          <img class="card-img-top" [src]="imagePath + p.backdrop_path" alt="">
+          <div class="card-body">
+
+            @if (p.name)
+             {
+              <h5 class="card-title">{{p.name}}</h5>
+             }
+             @else if (p.original_title)
+            {
+            <h5 class="card-title">{{p.original_title}}</h5>
+            }
+            <p class="card-text">{{p.overview.split(" ").slice(0,30).join(" ")}}</p>
+          </div>
+          <div class="card-footer">
+            @if (p.first_air_date)
+            {
+              <small class="text-body-secondary text-center">{{p.first_air_date}}</small>
+            }
+            @else if (p.release_date)
+           {
+            <small class="text-body-secondary text-center">{{p.release_date}}</small>
+           }
+          </div>
+        </div>
+      </div>
+        }
+
+    </div>
+  </div>
+</section>
+
+
